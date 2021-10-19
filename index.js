@@ -55,3 +55,23 @@ const polygon = L.polygon([
 marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 circle.bindPopup("I am a circle.");
 polygon.bindPopup("I am a polygon.");
+
+// добавляем всплывающее окно без привязки к маркеру
+/* Here we use openOn instead of addTo because it handles automatic closing of a 
+    previously opened popup when opening a new one which is good for usability. */
+const popup = L.popup()
+    .setLatLng([51.51, -0.09])
+    .setContent("I am a standalone popup.")
+    .openOn(mymap);
+
+const clickPopup = L.popup();
+
+// при клике будут отображаться popup c координатами точки клика
+function onMapClick(e) {
+    clickPopup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(mymap);
+}
+
+mymap.on('click', onMapClick);
