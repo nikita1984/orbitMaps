@@ -5,7 +5,7 @@ mapTitel.className = "titel";
 mapTitel.textContent = "My test map";
 
 const mapDescription = document.createElement("p");
-mapDescription.className = "description";
+mapDescription.classList.add('description');
 mapDescription.textContent = "Ниже будет расположена моя карта, созданная с помощью библиотеки Leaflet";
 
 elem.appendChild(mapTitel);
